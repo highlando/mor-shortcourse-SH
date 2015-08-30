@@ -20,11 +20,55 @@ I will start my short course by introduce the class of Linear Time Invariant (LT
  * Controllability, Observability
 
 ##### Date and Location
+#### Requirements
+ * basic notions from Linear Algebra
+ * basic notions from linear ODEs
+ * Laplace transform
+
+#### Contents of the lecture
+ * Examples of LTI systems
+ * State space representation
+ * Transferfunctions
+ * Realizations 
+ * Controllability, Observability
+
+##### Date and Location
 Sep. 2 (Wednesday)
 
 
-Sep. 7 (Monday) -- Introduction to Model Reduction of LTI Systems
-Sep. 9 (Wednesday) -- Model Reduction of LTI Systems via Projection
-Sep. 11 (Monday) -- Balanced Truncation
-Sep. 13 (Wednesday) -- Model Reduction for DAEs and Navier-Stokes Equations
+### Part 2/5 -- Introduction to Model Reduction of LTI Systems
+
+#### Requirements
+ * LTI systems (as of Lecture 1)
+ * basic notions from Linear Algebra
+
+#### Contents of the lecture
+ * Basic concepts and ideas of model reduction
+ * Examples of successful MOR 
+
+##### Date and Location
+Sep. 7 (Monday)
+
+### Sep. 9 (Wednesday) -- Model Reduction of LTI Systems via Projection
+#### Requirements
+
+#### Contents of the lecture
+
+##### Date and Location
+
+### Sep. 11 (Monday) -- Balanced Truncation
+
+#### Requirements
+
+#### Contents of the lecture
+
+##### Date and Location
+
+### Sep. 13 (Wednesday) -- Model Reduction for DAEs and Navier-Stokes Equations
+
+#### Requirements
+
+#### Contents of the lecture
+
+##### Date and Location
 
