@@ -15,6 +15,10 @@
 
 % \input{mathComAbb} %uses mathcomabb.tex to define commands for symbols and notations 
 
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
 %opening
 \title{Introduction to LTI Systems}
 \author{Jan Heiland}
@@ -29,10 +33,10 @@
 	\item Heat equation observation
 \end{itemize}
 \section{State Space Systems}
-\begin{align*}
+\begin{align}\label{eq:lti}
 	Ex(t) &= Ax(t) + Bu(t), \quad x(0) = x_0, \\
 	y(t) &= Cx(t),
-\end{align*}
+\end{align}
 where 
 \begin{itemize}
 	\item $x(t) \in \Rn$: the system's state
@@ -115,6 +119,63 @@ is a realization of one and the same transferfunction.
 Thus, there are many possible state space representations of a transfer function. Which one is a good choice? The dimension can be arbitrary large. How small can it be? (cf. \emph{model reduction})
 
 \section{Controllability, Observability}
+
+The states of an LTI are just part of a model that realizes a transfer function $G$. A transferfunction $G$ describes how controls $u$ lead to outputs $y$. As seen above in the example, there can be states that are neither affected (\emph{controlled} by the inputs nor seen (\emph{observed}) by the outputs of the system and which are obviously not needed to realize the input to output behavior of $G$.  
+
+We will give a thorough characterization of the \emph{controllable} and \emph{observable} states of an LTI. 
+
+\begin{definition}
+	The LTI $\abcsys$ or the pair $(A, B)$ is said to be \emph{controllable} if, for any initial state $x(0) = x_0$, $t_1 > 0$ and final state $x_1$, there exists a (piecewise continuous) input $u$ such that the solution of \eqref{eq:lti} satisfies $x(t_1 ) = x_1$. Otherwise, the system $\abcsys$ or the pair $(A, B)$ is said to be \emph{uncontrollable}.
+\end{definition}
+
+
+\begin{definition}
+	The LTI \abcsys~ or the pair $(C,A)$ is said to be \emph{observable} if, for any $t_1 > 0$, the initial state $x(0) = x_0$ can be determined from the time history of the input $u$ and the output $y$ in the interval of $[0, t_1]$. Otherwise, the system \abcsys, or $(C, A)$, is said to be \emph{unobservable}.
+\end{definition}
+
+There are algebraic conditions on controllability and observability.
+
+\begin{theorem}
+	The LTI $\abcsys$ is controllable (observable) if, and only if, the transformed LTI $\abcsyst$ is controllable (observable), where $T$ is a regular matrix.
+\end{theorem}
+
+With these definitions, and the invariance of the properties and the transferfunction with respect to state space transformations, we can find the states that really matter for the realization of a transferfunction.
+
+\begin{theorem}[Kalman Canonical Decomposition]
+	Given an LTI $\abcsys$, there is a state space transformation $T$ such that the transformed system $\abcsyst$ has the form 
+
+	\begin{align*}
+		\frac {\inva{}}{\inva t}
+		\begin{bmatrix} x_{co} \\ x_{c\bar o} \\ x_{\bar c o} \\ x_{\bar c \bar o} \end{bmatrix} 
+			&= 
+		\begin{bmatrix}
+			A\sco & 0 & A_{13} & 0 \\
+			A_{21} & A\scbo & A_{23} & A_{24} \\
+			0 & 0 & A\sbco & 0 \\
+			0 & 0 & A_{43} & A\sbcbo 
+		\end{bmatrix}
+		\begin{bmatrix} x_{co} \\ x_{c\bar o} \\ x_{\bar c o} \\ x_{\bar c \bar o} \end{bmatrix}
+			+
+		\begin{bmatrix} B\sco \\ B\scbo \\ 0 \\ 0 \end{bmatrix} u \\
+			y &= 
+			\begin{bmatrix} C\sco & 0 & C\sbco & 0 \end{bmatrix}
+		\begin{bmatrix} x_{co} \\ x_{c\bar o} \\ x_{\bar c o} \\ x_{\bar c \bar o} \end{bmatrix},
+	\end{align*}
+	with the subsystem $(A\sco, B\sco, C\sco, -)$ being controllable and observable, while the remaining states $x\sbco$, $x\scbo$, or $x\sbcbo$ are not controllable, not observable, or neither of them.
+	Moreover, for the transferfunction, it holds that
+	\begin{equation*}
+		G(s) = C(sI-A)^{-1}B = C\sco(sI-A\sco)^{-1}B\sco.
+	\end{equation*}
+\end{theorem}
+
+What does this mean for us and a transferfunction $G(s)$?
+\begin{itemize}
+	\item The minimal dimension of a realization is the dimension of $x\sco$ in the \emph{Kalman Canonical Decomposition}
+	\item Such a realization is called \emph{minimal realization}
+	\item It is the starting point for further model reduction. (Throwing out $x\sbco$ etc. does not effect $G(s)$ and is typically not considered a model reduction)
+	\item There are algorithm to reduce a realization to a minimal one (cf. Varga)
+	\item In practice, the uncontrolled and unobserved states play a role and they may cause troubles ( check the literature for \emph{zero dynamics} )
+\end{itemize}
 
 \bibliographystyle{plain}
 \bibliography{}
