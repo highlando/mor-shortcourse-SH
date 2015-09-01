@@ -1,0 +1,122 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{epsfig}
+\usepackage{amssymb,amsmath,amsthm,mathrsfs,mathtools,amscd}
+\usepackage{natbib}
+\usepackage{float}
+\usepackage[figtopcap]{subfigure}
+\usepackage{mymacros}
+\usepackage{pgfplots}
+% \pgfplotsset{compat=newest}
+% \usetikzlibrary{external}
+% \tikzexternalize[prefix=tikz/]
+\usepackage[bookmarks=true]{hyperref}
+
+% \input{mathComAbb} %uses mathcomabb.tex to define commands for symbols and notations 
+
+%opening
+\title{Introduction to LTI Systems}
+\author{Jan Heiland}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\input{stylefyle}
+
+\section{Examples}
+\begin{itemize}
+	\item Heat equation observation
+\end{itemize}
+\section{State Space Systems}
+\begin{align*}
+	Ex(t) &= Ax(t) + Bu(t), \quad x(0) = x_0, \\
+	y(t) &= Cx(t),
+\end{align*}
+where 
+\begin{itemize}
+	\item $x(t) \in \Rn$: the system's state
+	\item $u(t) \in \Rm$: the input or control
+	\item $y(t) \in \Rq$: the output or measurements
+	\item $E \in \Rnn$ is often the identity or the mass matrix of a discretization
+	\item $A \in \Rnn$: the system matrix
+	\item $B \in \Rnm$: the input matrix
+	\item $C \in \Rqn$: the output matrix
+\end{itemize}
+
+We denote the LTI by $\abcsys$
+
+Sometimes the state $x$ has a meaning in the model - like the temperature. Sometimes $x$ is not available or simply not of interest. Sometimes $x$ is just a mathematical object as a part of the model. 
+
+\section{Transferfunctions}
+The state is not accessible, not of interest or only an artificial object of the model for the input to output behavior $\mathbf G$ of a system $\mathbf P$
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+ \draw [->] (3,1.1/2) -- (4,1.1/2); 
+ \draw (4,0) rectangle (6,1.1) node[pos=.5] {$\mathbf P$};
+ % \draw (4,0) rectangle (6,1.1) node[pos=.5] {\small{$y(t) = Cx(t), Ex(t) = Ax(t) + Bu(t)$}};
+ \draw [->] (6,1.1/2) -- (7,1.1/2); 
+ \node at (2.7,0.5) {$u$};
+ \node at (7.3,0.5) {$y$};
+\end{tikzpicture}
+\end{figure}
+that maps an input $u$ to the corresponding output $y$.
+
+If $\mathbf P$ is an $\abcsys$, the function $\mathbf G$ can be defined via 
+\begin{equation*}
+	\mathbf P \colon u \mapsto y\colon y(t) = S(t, u)
+\end{equation*}
+this is time-domain. A function $u \colon [0, \infty) \to \Rm$ is mapped to a function $y\colon [0, \infty)  \to \Rq$.
+
+Through the Laplace transform $\mathcal L$ and its inverse $\mathcal L^{-1}$, we can switch between time-domain and frequency-domain representations of the input and output signals.
+
+\begin{equation*}
+	U(s) := \mathcal L\{u\}(s) := \int_0^\infty e^{-st}u(t)\inva t,
+\end{equation*}
+where $s\in \mathbb C$ is the \emph{frequency} and
+\begin{equation*}
+	y(t) := \mathcal L^{-1}\{Y\}(t) := \lim_{T\to \infty} \frac 1{2\pi i} \int_{\gamma - iT}^{\gamma + iT} e^{s}Y(s)\inva s
+\end{equation*}
+where $\gamma \in \R$ is chosen such that contour path of the integration is the domain of convergence of $Y$.
+
+With the basic properties of the Laplace transform
+\begin{itemize}
+	\item $\dot X(s):= \mathcal L\{\dot x\}(s) -x(0)= s\mathcal L\{x\}(s) = s X(s)-x(0)$
+	\item and linearity $\mathcal L\{Ax\}(s) = AX(s)$
+\end{itemize}
+with zero initial value $x(0) = 0$, the $\abcsys$ defines the transferfunction
+\begin{equation*}
+	G(s) := C(sE-A)^{-1}B
+\end{equation*}
+
+\section{Realizations}
+Given a rational matrix function $s\mapsto G(s)\in \mathbb R^{q\times m}$, is there $\abcsys$ so that 
+\begin{equation*}
+	G(s) = C(sI-A)^{-1}B ?
+\end{equation*}
+If there is one such state space system $\abcsys$, then there are infinitely many:
+
+For every invertible $T$, the state space system $\abcsyst$ is a realization, since
+\begin{equation*}
+	C(sI-A)^{-1}B = CT^{-1}(s-TAT^{-1})^{-1}TB.
+\end{equation*}
+
+Also
+\begin{equation*}
+	(
+	\begin{bmatrix} A & 0 \\ 0 & 0 \end{bmatrix},
+	\begin{bmatrix} B \\ 0 \end{bmatrix},
+	\begin{bmatrix} C & 0 \end{bmatrix}, -
+	)
+\end{equation*}
+is a realization of one and the same transferfunction.
+
+Thus, there are many possible state space representations of a transfer function. Which one is a good choice? The dimension can be arbitrary large. How small can it be? (cf. \emph{model reduction})
+
+\section{Controllability, Observability}
+
+\bibliographystyle{plain}
+\bibliography{}
+\end{document}
+
