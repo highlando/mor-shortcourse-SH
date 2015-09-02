@@ -24,7 +24,6 @@ I will start my short course by introduce the class of Linear Time Invariant (LT
  * Transferfunctions
  * Realizations 
  * Controllability, Observability
- * Norms
 
 ## 2. Introduction to Model Reduction of LTI Systems
 
@@ -35,6 +34,7 @@ I will start my short course by introduce the class of Linear Time Invariant (LT
 #### Contents of the lecture
  * Examples of successful MOR 
  * Basic concepts and ideas of model reduction
+ * Norms of systems
 
 
 ##  3. Model Reduction of LTI Systems via Projection
