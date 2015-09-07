@@ -9,7 +9,7 @@ I will start my short course by introduce the class of Linear Time Invariant (LT
  2. Introduction to Model Reduction of LTI Systems, Sep. 7th
  3. Model Reduction of LTI Systems via Projection, Sep. 9th 
  4. Balanced Truncation, Sep. 14th
- 5. Model Reduction for DAEs and Navier-Stokes Equations, Sep. 16th
+ 5. Model Reduction for DAEs and Navier-Stokes Equations, Sep. 15th
 
 ##  1. Introduction to the Control Theory of Linear Time Invariant (LTI) Systems
 
