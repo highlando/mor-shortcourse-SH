@@ -1,0 +1,121 @@
+\section{Norms of Signals and Systems}
+\subsection{Norms}
+
+Ingredients of a norm:
+\begin{itemize}
+	\item A linear space $V$ over $\mathbb C$ (or $\mathbb R$).
+	\item A functional $$\norm{\cdot}\colon V \to \Rplus$$ that has the following properties:
+		\begin{enumerate}
+			\item $\norm{\alpha v} = \abs{\alpha}\norm{v}$,
+			\item $\norm{v+w} \leq \norm{v}+\norm{w}$, and
+			\item $\norm{v} = 0$ if, and only if, $v=0$,
+		\end{enumerate}
+		for any $v$, $w\in V$ and any $\alpha \in \mathbb C$ (or $\mathbb R$).
+\end{itemize}
+
+If $(V,\norm{\cdot}_V)$ and $(W,\norm{\cdot}_W)$, then for the space of linear maps $\bigl ( V \to W \bigr)$ a norm is defined via
+$$
+\norm{G}_* := \sup_{v\in V, v\neq 0}\frac{\norm{Gv}_W}{\norm{v}_V}.
+$$
+This is the norm for $G\colon V \to W$ that is induced by $\norm{\cdot}_V$ and $\norm{\cdot}_W$. There can be other norms that are not induced.
+
+\subsection{Norms of Signals}
+Common norms and spaces for the input and output signals 
+$$u, y\colon [0, \infty) \to \mathbb R^{m}, \mathbb R^{q}$$:
+
+The $\bL_1^m$ norm 
+$$ \norm{u}_{\bL_1} := \int_0^\infty \sum_{i=1}^m\abs{u_i(t)} \inva t $$ 
+that defines the $\bL_1^m$ space of integrable (summable) functions
+$$\bL_1^m:=\bigl \{ u \colon [0, \infty) \to \mathbb R^{m} : \norm{u}_{\bL_1}<\infty \bigr \} $$
+
+The $\bL_2^q$ norm 
+$$ \norm{y}_{\bL_2} := \bigl(\int_0^\infty \sum_{i=1}^q\abs{y_i(t)}^2 \inva t\bigr)^{\frac 12} $$ 
+that defines the $\bL_2^q$ space of square integrable functions
+$$\bL_2^q:=\bigl \{ y \colon [0, \infty) \to \mathbb R^{q} : \norm{u}_{\bL_1}<\infty \bigr \} $$
+
+The $\bL_\infty^m$ norm 
+$$ \norm{u}_{\bL_\infty} := \max_{i=\{1, \dotsc, m\}} \sup_{t>0}\abs{u_i(t)} $$ 
+that defines the $\bL_\infty^m$ space of bounded functions
+$$\bL_\infty^m:=\bigl \{ u \colon [0, \infty) \to \mathbb R^{m} : \norm{u}_{\bL_\infty}<\infty \bigr \} $$
+
+Where it is clear from the context, we will drop the superscripts $p$ and $m$ that denote the dimension of the signals.
+
+The $\bL_2 $ norm can also be evaluated in frequency domain
+
+\begin{theorem}
+	For $u \in \bL_2 $ it holds that 
+	\begin{equation*}
+		\norm{u}_{\bL_2 } = \bigl ( \frac{1}{2\pi} \int_{-\infty}^{\infty} U(i\omega)^*U(i\omega) \inva \omega \bigr)^{\frac 12},
+	\end{equation*}
+	where $U$ is the \emph{Fourier} transform of $u$.
+\end{theorem}
+
+\begin{footnotesize}
+	Fourier transform $\mathcal F$ and Laplace transform $\mathcal L$ coincide for $s=i\omega$, $\omega \in \mathbb R^{}$ and  $u(t)=0$ for $t\leq 0$:
+	$$
+	\mathcal F(u)(i\omega) := \int_{-\infty}^{\infty} u(t) e^{-i\omega t}\inva t = \int_0^{\infty} u(t)e^{-st}\inva t = \mathcal L(u)(s)
+	$$
+\end{footnotesize}
+\subsection{Norm of a System}
+A system $G$ or \abcdsys transfers inputs to outputs.
+\begin{itemize}
+	\item What does a norm mean for a system?
+	\item Or, what is a large system, what is a small system?
+\end{itemize}
+From the definition of an operator norm.
+
+$$
+\norm{G} = \sup_{u\neq 0}\frac{\norm{Gu}}{\norm{u}} 
+$$
+meaning that for all $u$:
+$$
+\norm{y}=\norm{Gu}\leq \norm{G}\norm{u}.
+$$
+
+For systems, large refers to what extend an input is amplified and $\norm{G}$ is called the \emph{gain}.
+
+Furthermore, with a norm one can compare two systems $G_1$ and $G_2$ via the difference in the output for the same input
+
+$$\norm{y_1 - y_2 }=\norm{G_1u - G_2u}\leq \norm{G_1-G_2}\norm{u}.$$
+
+\subsection{Defining a norm for systems}
+Let $m=q=1$, i.e. we consider a SISO system \abcsys.
+
+If \abcsys with stable and strictly proper transfer function $G$ is stable, then impulse response of the system
+$$g(t) = C\int_0^t e^{A(t-s)}B\delta(s) \inva s = Ce^{At}B$$
+decays exponentially and 
+$$
+\norm{g}_{\bL_2 } = \bigl( \frac{1}{2\pi} \int_{-\infty}^{\infty} G(i\omega)^*G(i\omega) \inva \omega \bigr)^{\frac 12} =: \norm{G}_2 < \infty
+$$
+This defines a norm for systems since (Exercise!)
+\begin{itemize}
+	\item $G=C(sI-A)^{-1}B$ is indeed the Laplace transform of $g$
+	\item the functional $\norm{\cdot}_2$ for stable and strictly proper transferfunctions is a norm
+\end{itemize}
+
+Furthermore, (Exercise!), $\norm{y}_{\bL_\infty} \leq \norm{G}_2 \norm{u}_{\bL_\infty}$.
+
+\begin{footnotesize}
+	A system \abcdsys~or $A$ is stable, if there exists a $\lambda>0$, such that $\norm{e^At}\leq e^{-\lambda t}$, for $t>0$. This means that all eigenvalues of $A$ must have a negative real part.
+\end{footnotesize}
+
+
+For MIMO systems \abcsys~with $u(t)\in\Rm$ and $y(t)\in\Rq$, with a stable and strictly proper transferfunction $\mathcal G\colon s \to \mathbb R^{q\times m} $, the $\htwo$ norm is defined as  
+\begin{equation*}
+	\norm{G}_2 := \bigl( \frac{1}{2\pi} \int_{-\infty}^{\infty} \trace{ G(i\omega)^*G(i\omega)} \inva \omega \bigr)^{\frac 12}
+\end{equation*}
+
+This is the norm of the well-known $\emph{Hardy}$ space $\htwo$ of matrix functions that are analytic in the open right half of the complex plane. Stable and strictly proper transfer functions are in $\htwo$.
+
+For a stable and proper transfer function one can define the $\hinf$ norm:
+\begin{equation*}
+	\norm{G}_\infty := \sup_{\omega \in \mathbb R^{} } \sigma_{\max{}} \bigl(G(i\omega)\bigr),
+\end{equation*}
+where $\sigma_{\max{}}\bigl(G(i\omega)\bigr)$ is the largest singular value of $G(i\omega)$.
+
+This is the norm of the well-known $\emph{Hardy}$ space $\hinf$ of matrix functions that are analytic in the open right half of the complex plane and bounded on the imaginary axis. Stable and strictly proper transfer functions are in $\htwo$.
+
+The $\hinf$-norm is induced by the $\bL_2$ norm:
+\begin{equation*}
+	\norm{G}_\infty = \sup_{u\in \bL_2, u\neq 0}\frac{\norm{Gu}_{\bL_2}}{\norm{u}_{\bL_2}} .
+\end{equation*}
