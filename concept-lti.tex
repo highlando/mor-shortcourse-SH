@@ -1,38 +1,9 @@
-\documentclass[a4paper,10pt]{article}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{epsfig}
-\usepackage{amssymb,amsmath,amsthm,mathrsfs,mathtools,amscd}
-\usepackage{natbib}
-\usepackage{float}
-\usepackage[figtopcap]{subfigure}
-\usepackage{mymacros}
-\usepackage{pgfplots}
-% \pgfplotsset{compat=newest}
-% \usetikzlibrary{external}
-% \tikzexternalize[prefix=tikz/]
-\usepackage[bookmarks=true]{hyperref}
-
-% \input{mathComAbb} %uses mathcomabb.tex to define commands for symbols and notations 
-
-\newtheorem{theorem}{Theorem}[section]
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-
-%opening
-\title{Introduction to LTI Systems}
-\author{Jan Heiland}
-
-\begin{document}
-\maketitle
-\tableofcontents
-\input{stylefyle}
-
-\section{Examples}
+\section{Introduction to LTI Systems}
+\subsection{Examples}
 \begin{itemize}
 	\item Heat equation observation
 \end{itemize}
-\section{State Space Systems}
+\subsection{State Space Systems}
 \begin{align}\label{eq:lti}
 	Ex(t) &= Ax(t) + Bu(t), \quad x(0) = x_0, \\
 	y(t) &= Cx(t),
@@ -52,7 +23,7 @@ We denote the LTI by $\abcsys$
 
 Sometimes the state $x$ has a meaning in the model - like the temperature. Sometimes $x$ is not available or simply not of interest. Sometimes $x$ is just a mathematical object as a part of the model. 
 
-\section{Transferfunctions}
+\subsection{Transferfunctions}
 The state is not accessible, not of interest or only an artificial object of the model for the input to output behavior $\mathbf G$ of a system $\mathbf P$
 \begin{figure}[h]
 \centering
@@ -94,7 +65,7 @@ with zero initial value $x(0) = 0$, the $\abcsys$ defines the transferfunction
 	G(s) := C(sE-A)^{-1}B
 \end{equation*}
 
-\section{Realizations}
+\subsection{Realizations}
 Given a rational matrix function $s\mapsto G(s)\in \mathbb R^{q\times m}$, is there $\abcsys$ so that 
 \begin{equation*}
 	G(s) = C(sI-A)^{-1}B ?
@@ -118,7 +89,7 @@ is a realization of one and the same transferfunction.
 
 Thus, there are many possible state space representations of a transfer function. Which one is a good choice? The dimension can be arbitrary large. How small can it be? (cf. \emph{model reduction})
 
-\section{Controllability, Observability}
+\subsection{Controllability, Observability}
 
 The states of an LTI are just part of a model that realizes a transfer function $G$. A transferfunction $G$ describes how controls $u$ lead to outputs $y$. As seen above in the example, there can be states that are neither affected (\emph{controlled} by the inputs nor seen (\emph{observed}) by the outputs of the system and which are obviously not needed to realize the input to output behavior of $G$.  
 
@@ -176,8 +147,3 @@ What does this mean for us and a transferfunction $G(s)$?
 	\item There are algorithm to reduce a realization to a minimal one (cf. Varga)
 	\item In practice, the uncontrolled and unobserved states play a role and they may cause troubles ( check the literature for \emph{zero dynamics} )
 \end{itemize}
-
-\bibliographystyle{plain}
-\bibliography{}
-\end{document}
-
