@@ -1,6 +1,6 @@
 # Introductory Course on Model Order Reduction 
 
-Please see the [projects website](http://janheiland.de/mor-shortcourse-SH/) for more information like the lecture notes.
+Please download the [lecture notes](https://github.com/highlando/mor-shortcourse-SH/raw/gh-pages/lecture_notes.pdf) -- updates after every lecture
 
 ### Abstract: 
 
