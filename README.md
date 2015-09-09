@@ -18,11 +18,14 @@ I will start my short course by introducing the class of Linear Time Invariant (
 | Hello | 你好 || China ||
 |--------|--------|-|-----|-|
 | Matrix| 矩阵 | | Vector| 向量 |
+
+
 | Eigenvalue |本征值| | Projection ||
 | Subspace |子空间| | Interpolation |内插|
 | Model || | System ||
 | Transfer function || | Stable ||
-| Truncation |||||
+
+| Truncation || |||
 
 ##  1. Introduction to the Control Theory of Linear Time Invariant (LTI) Systems
 
