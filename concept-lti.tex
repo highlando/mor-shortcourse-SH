@@ -147,3 +147,47 @@ What does this mean for us and a transferfunction $G(s)$?
 	\item There are algorithm to reduce a realization to a minimal one (cf. Varga)
 	\item In practice, the uncontrolled and unobserved states play a role and they may cause troubles ( check the literature for \emph{zero dynamics} )
 \end{itemize}
+
+\subsection{Stability}
+A system $G$ is stable if all \emph{poles} of $G$ are located in the left half-plane $\C^-$.
+
+{\footnotesize If $m=q=1$, then $G(s)=\frac{N(s)}{D(s)}$, where $N(s)$ and $D(s)$ are polynomials and the \emph{poles} are the roots of $D(s)$, i.e. those $s\in\mathbb C$ for which $D(s)=0$.
+
+If $m$, $q >1$, then one can use the \emph{McMillan} form of $G$ to determine the poles.}
+
+If \abcdsys~is a minimal realization of a stable system $G$, then the poles of $G$ are the eigenvalues of $A$.
+
+In this case, the system is stable if for all eigenvalues $\lambda$ of $A$, it holds that $\lambda \in \C^-$. Then $A$ is called \emph{stable} or \emph{Hurwitz}.
+
+A stable system can have a stable realization.
+
+
+\subsection{Gramians and Balanced Realizations}
+If $A$ is stable, then the \emph{Lyapunov} equations 
+\begin{align*}
+	A^*P + PA + BB^* = 0
+	\intertext{and}
+	AQ + Q^*A + C^*C = 0
+\end{align*}
+have a unique positive definite solutions $P$ and $Q$. The matrix $P$ is called the the controllability Gramian and $Q$ is called the observability Gramian.
+
+If $P$ and $Q$ are the Gramians of a stable realization \abcdsys, then the transformed system $\rabcdsys=\abcdsyst$ has the Gramians 
+\begin{equation*}
+	\hat P = TPT^* \quad \text{and} \quad \hQ = (T^{-1})^*QT^{-1}
+\end{equation*}
+for any regular transformation $T$.
+
+For any minimal and stable system $\abcdsys$, there are particular transformations $T$, so that the transformed system has Gramians that are equal and diagonal:
+\begin{equation*}
+	\hat P = \hQ =
+	\begin{bmatrix}
+		\lambda_1 & & & \\
+		& \lambda_2 & & \\
+		& & \ddots & \\
+		& & & \lambda_n \\
+	\end{bmatrix},
+\end{equation*}
+with $\lambda_1 \geq \lambda_2 \geq \dotsm \geq \lambda_n > 0$.
+
+These realizations are called \emph{Balanced Realizations}.
+
