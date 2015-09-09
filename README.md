@@ -16,8 +16,9 @@ I will start my short course by introducing the class of Linear Time Invariant (
 ### Little Chinese Dictionary
 
 | Hello | 你好 |
-----------------
-| Matrix | 矩阵 |
+--------|--------
+| Matrix| 矩阵 |
+| Vector| 向量 |
 
 ##  1. Introduction to the Control Theory of Linear Time Invariant (LTI) Systems
 
