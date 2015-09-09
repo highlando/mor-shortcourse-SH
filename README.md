@@ -1,7 +1,5 @@
 # Introductory Course on Model Order Reduction 
 
-你好
-
 Please download the [lecture notes](https://github.com/highlando/mor-shortcourse-SH/raw/gh-pages/lecture_notes.pdf) -- updates after every lecture
 
 ### Abstract: 
@@ -14,6 +12,12 @@ I will start my short course by introducing the class of Linear Time Invariant (
  3. [Model Reduction of LTI Systems via Projection](#3-model-reduction-of-lti-systems-via-projection), Sep. 9th 
  4. [Balanced Truncation](#4-balanced-truncation), Sep. 14th
  5. [Model Reduction for DAEs and Navier-Stokes Equations](#5-model-reduction-for-daes-and-navier-stokes-equations), Sep. 15th
+
+### Little Chinese Dictionary
+
+| Hello | 你好 |
+----------------
+| Matrix | 矩阵 |
 
 ##  1. Introduction to the Control Theory of Linear Time Invariant (LTI) Systems
 
