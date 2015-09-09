@@ -19,15 +19,15 @@ I will start my short course by introducing the class of Linear Time Invariant (
 --------|--------
 | Matrix| 矩阵 |
 | Vector| 向量 |
-| Eigenvalue ||
-| Projection ||
-| Subspace ||
-| Interpolation ||
-| Model ||
-| System ||
-| Transfer function ||
-| Stable ||
-| Truncation ||
+| Eigenvalue |特征值|
+| Projection |投影|
+| Subspace |子空间|
+| Interpolation |插值|
+| Model |模型|
+| System |系统|
+| Transfer function |传递函数|
+| Stable |稳定|
+| Truncation |截断|
 
 ##  1. Introduction to the Control Theory of Linear Time Invariant (LTI) Systems
 
