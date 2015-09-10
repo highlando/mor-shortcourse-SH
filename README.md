@@ -32,14 +32,14 @@ I will start my short course by introducing the class of Linear Time Invariant (
 ##  1. Introduction to the Control Theory of Linear Time Invariant (LTI) Systems
 
 #### Requirements
- * basic notions from Linear Algebra
- * basic notions from linear ODEs
+ * Basic notions from Linear Algebra
+ * Basic notions from linear ODEs
  * Laplace transform
 
 #### Contents of the lecture
  * Examples of LTI systems
  * State space representation
- * Transferfunctions
+ * Transfer functions
  * Realizations 
  * Controllability, Observability
 
@@ -47,7 +47,7 @@ I will start my short course by introducing the class of Linear Time Invariant (
 
 #### Requirements
  * LTI systems 
- * basic notions from Linear Algebra
+ * Basic notions from Linear Algebra
 
 #### Contents of the lecture
  * Examples of successful MOR 
@@ -58,7 +58,7 @@ I will start my short course by introducing the class of Linear Time Invariant (
 ##  3. Model Reduction of LTI Systems via Projection
 #### Requirements
  * LTI systems 
- * basic notions from Linear Algebra
+ * Basic notions from Linear Algebra
 
 #### Contents of the lecture
  * Projectors and projections
@@ -69,14 +69,28 @@ I will start my short course by introducing the class of Linear Time Invariant (
 ##  4. Balanced Truncation
 
 #### Requirements
+ * LTI systems
+ * Realizations
+ * MOR via projection
 
 #### Contents of the lecture
+ * System Gramians and Lyapunov Equations
+ * Balanced Realizations
+ * Hankel Singular Values
+ * Balanced Truncation
+ * Hankel Operator
 
 
 ##  5. Model Reduction for DAEs and Navier-Stokes Equations
 
 #### Requirements
+ * LTI Systems
+ * Balanced Truncation
 
 #### Contents of the lecture
-
+ * DAEs as LTI systems
+ * Decouplings of DAEs
+ * (Linearized) Navier-Stokes Equations
+ * Balanced Truncation for linear Navier-Stokes Equations
+ * Application to stabilization of flows
 
